@@ -1,9 +1,8 @@
 [book]
-title = "Seguretat del Software (UIB)"
+title = "Eines de desenvolupament de software (UIB)"
 authors = ["Miquel A. Cabot"]
-description = "Materials utilitzats a l'assignatura Seguretat del Software (UIB)"
+description = "Materials sobre eines i metodologies de desenvolupament de software."
 language = "en"
-multilingual = false
 src = "content"
 
 [build]
@@ -15,8 +14,8 @@ edition = "2021"
 
 [output.html]
 site-url = "/book/" # needed for gh-pages, MUST match repo name on github!
-git-repository-url = "https://github.com/uib-software-security/book"
-edit-url-template = "https://github.com/uib-software-security/book/edit/main/{path}"
+git-repository-url = "https://github.com/uib-llp/book"
+edit-url-template = "https://github.com/uib-llp/book/edit/main/{path}"
 
 [output.html.search]
 limit-results = 20

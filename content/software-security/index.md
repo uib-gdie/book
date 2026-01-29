@@ -1,1 +1,0 @@
-# 🔐 Seguretat del software

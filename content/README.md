@@ -1,14 +1,14 @@
-# Seguretat del Software
+# Eines de desenvolupament de software
 
 ![Logo UIB](./img/logo-uib.png)
 
 > **Universitat de les Illes Balears**
 >
-> **Grau d'Enginyeria Telemàtica​**
+> **Grau d'Enginyeria Informàtica**
 >
 > **Professor**: Miquel A. Cabot ([miquel.cabot@uib.cat](mailto:miquel.cabot@uib.cat))
 
-Apunts de l'assignatura **Seguretat del Software** en format [mdBook](https://rust-lang.github.io/mdBook/), amb presentacions generades mitjançant [reveal-js](https://revealjs.com/).
+Apunts sobre eines i metodologies de desenvolupament de software en format [mdBook](https://rust-lang.github.io/mdBook/), amb presentacions generades mitjançant [reveal-js](https://revealjs.com/).
 
 ## Llegeix el Llibre
 
@@ -16,7 +16,7 @@ Us recomanam la [versió en línia](#disponible-en-línia) per a un ús general.
 
 ### Disponible en línia
 
-La darrera versió està disponible a: [https://uib-software-security.github.io/book/](https://uib-software-security.github.io/book/)
+La darrera versió està disponible a: [https://uib-llp.github.io/book/](https://uib-llp.github.io/book/)
 
 ### Compilar sense connexió
 
