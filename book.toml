@@ -1,7 +1,7 @@
 [book]
-title = "Eines de desenvolupament de software (UIB)"
+title = "Gestió i Distribució de la Informació Empresarial (UIB)"
 authors = ["Miquel A. Cabot"]
-description = "Materials sobre eines i metodologies de desenvolupament de software."
+description = "Materials de Gestió i Distribució de la Informació Empresarial."
 language = "en"
 src = "content"
 

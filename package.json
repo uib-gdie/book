@@ -1,7 +1,7 @@
 {
   "name": "uib-llp",
   "version": "1.0.0",
-  "description": "Eines de desenvolupament de software (UIB)",
+  "description": "Gestió i Distribució de la Informació Empresarial (UIB)",
   "scripts": {
     "s": "bun serve-slides",
     "dev": "bun serve-slides",

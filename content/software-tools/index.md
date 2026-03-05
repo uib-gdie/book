@@ -1,1 +1,1 @@
-# 🛠️ Eines de desenvolupament de software
+# 🛠️ Gestió i Distribució de la Informació Empresarial

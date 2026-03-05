@@ -1,4 +1,4 @@
-# Eines de desenvolupament de software
+# Gestió i Distribució de la Informació Empresarial
 
 ![Logo UIB](./img/logo-uib.png)
 
@@ -8,7 +8,7 @@
 >
 > **Professor**: Miquel A. Cabot ([miquel.cabot@uib.cat](mailto:miquel.cabot@uib.cat))
 
-Apunts sobre eines i metodologies de desenvolupament de software en format [mdBook](https://rust-lang.github.io/mdBook/), amb presentacions generades mitjançant [reveal-js](https://revealjs.com/).
+Apunts de Gestió i Distribució de la Informació Empresarial en format [mdBook](https://rust-lang.github.io/mdBook/), amb presentacions generades mitjançant [reveal-js](https://revealjs.com/).
 
 ## Llegeix el Llibre
 
