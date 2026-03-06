@@ -16,7 +16,7 @@ Us recomanam la [versió en línia](#disponible-en-línia) per a un ús general.
 
 ### Disponible en línia
 
-La darrera versió està disponible a: [https://uib-llp.github.io/book/](https://uib-llp.github.io/book/)
+La darrera versió està disponible a: [https://uib-gdie.github.io/book/](https://uib-gdie.github.io/book/)
 
 ### Compilar sense connexió
 

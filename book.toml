@@ -14,8 +14,8 @@ edition = "2021"
 
 [output.html]
 site-url = "/book/" # needed for gh-pages, MUST match repo name on github!
-git-repository-url = "https://github.com/uib-llp/book"
-edit-url-template = "https://github.com/uib-llp/book/edit/main/{path}"
+git-repository-url = "https://github.com/uib-gdie/book"
+edit-url-template = "https://github.com/uib-gdie/book/edit/main/{path}"
 
 [output.html.search]
 limit-results = 20
