@@ -311,7 +311,42 @@ npm install --save-dev hardhat
 Crear projecte:
 
 ```bash
-npx hardhat
+npx hardhat --init
+```
+
+---v
+
+Escollir `Hardhat 2 (older version)`
+
+```bash
+👷 Welcome to Hardhat v3.3.0 👷
+
+? Which version of Hardhat would you like to use? …
+  Hardhat 3 Beta (recommended for new projects)
+❯ Hardhat 2 (older version)
+```
+
+---v
+
+Escollir nom de la carpeta on volem crear el projecte:
+
+```bash
+? Where would you like to initialize the project?
+
+Please provide either a relative or an absolute path: › .
+```
+
+---v
+
+Escollir `A Typescript project using Mocha and Ethers.js` com a tipus de projecte
+
+```bash
+? What type of project would you like to initialize? …
+  A Javascript project using Mocha and Ethers.js
+  A Javascript project using Mocha and Ethers.js (ESM)
+❯ A Typescript project using Mocha and Ethers.js
+  A Typescript project using Mocha and Viem
+  An empty config file (hardhat.config.js)
 ```
 
 ---
@@ -321,7 +356,7 @@ npx hardhat
 ```
 project/
  ├ contracts/
- ├ scripts/
+ ├ ignition/modules/
  ├ test/
  ├ hardhat.config.js
 ```
@@ -338,25 +373,55 @@ El compilador:
 
 - genera **ABI**
 - genera **bytecode**
+- (mirar carpeta `artifacts`)
+
+---
+
+# Executar tests
+
+```bash
+npx hardhat test
+```
+
+o 
+
+```bash
+REPORT_GAS=true npx hardhat test
+```
+
+---v
+
+Exemple de resultats dels tests:
+
+```bash
+  Lock
+    Withdrawals
+      Validations
+        ✔ Should revert with the right error if called too soon
+        ✔ Should revert with the right error if called from another account
+        ✔ Shouldn't fail if the unlockTime has arrived and the owner calls it
+      Transfers
+        ✔ Should transfer the funds to the owner
+
+  9 passing (254ms)
+```
 
 ---
 
 # Desplegar contracte
 
-Exemple script:
+Exemple script (fitxer `ignition\modules\Lock.ts`):
 
 ```javascript
-async function main() {
+import { buildModule } from "@nomicfoundation/hardhat-ignition/modules";
 
- const Contract = await ethers.getContractFactory("Counter");
- const contract = await Contract.deploy();
+const LockModule = buildModule("LockModule", (m) => {
+  const lock = m.contract("Lock", [], {});
 
- await contract.deployed();
+  return { lock };
+});
 
- console.log("Contract deployed:", contract.address);
-}
-
-main();
+export default LockModule;
 ```
 
 ---
@@ -364,7 +429,26 @@ main();
 Executar deploy:
 
 ```bash
-npx hardhat run scripts/deploy.js
+npx hardhat ignition deploy ./ignition/modules/Lock.ts
+```
+
+---v
+
+Resultat del desplegament:
+
+```bash
+Hardhat Ignition 🚀
+
+Deploying [ LockModule ]
+
+Batch #1
+  Executed LockModule#Lock
+
+[ LockModule ] successfully deployed 🚀
+
+Deployed Addresses
+
+LockModule#Lock - 0x5FbDB2315678afecb367f032d93F642f64180aa3
 ```
 
 ---
