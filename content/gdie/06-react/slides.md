@@ -29,8 +29,11 @@ Aprendrem:
 Característiques:
 
 - **declarativa**
+  - Descrius què vol mostrar la UI segons l'estat, no com actualitzar-la pas a pas.
 - basada en **components**
 - **Virtual DOM**
+  - Una representació lleugera del DOM en memòria (objectes JS).
+  - Quan canvia l'estat, React crea un nou Virtual DOM, el compara amb l'anterior (__diffing__) i només aplica al DOM real els canvis mínims necessaris.
 - gran **ecosistema**
 
 ---
@@ -48,6 +51,8 @@ flowchart LR
 ```
 
 </div>
+
+L'estat de l'aplicació alimenta els components, que generen un Virtual DOM, i React el compara amb l'anterior per actualitzar només els canvis necessaris al DOM real.
 
 ---
 
