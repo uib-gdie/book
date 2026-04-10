@@ -15,6 +15,8 @@ Aprendrem:
 - renderitzat **condicional** i **llistes**
 - **useEffect** i crides a APIs
 - **routing** amb React Router
+- integració amb **Ethereum** (providers, MetaMask, contractes)
+- estructura d'un **frontend de dapp**
 
 ---
 
@@ -534,6 +536,223 @@ function Login() {
 
 ---
 
+# Integració amb Ethereum
+
+---
+
+## Frontend d'una dapp
+
+Una **dapp** té dues parts:
+
+- **Smart contract** desplegat a la blockchain (Solidity + Hardhat).
+- **Frontend** (React) que hi interactua des del navegador.
+
+El frontend necessita:
+
+- connectar-se a la **wallet** de l'usuari (ex: MetaMask)
+- saber l'**adreça** i l'**ABI** del contracte
+- enviar-li **crides** i **transaccions**
+
+---
+
+## Variables d'entorn
+
+Fitxer `.env` a l'arrel del projecte:
+
+```text
+REACT_APP_CONTRACT_ADDRESS=0x123...
+REACT_APP_RPC_URL=https://sepolia.infura.io/v3/...
+```
+
+- Han de començar per `REACT_APP_` perquè Create React App les exposi.
+- S'accedeixen amb `process.env.REACT_APP_CONTRACT_ADDRESS`.
+- El `.env` **no** es puja al repositori (va al `.gitignore`).
+
+---
+
+## Provider i Signer
+
+Amb **ethers.js**:
+
+```bash
+npm install ethers
+```
+
+- **Provider**: connexió de només lectura a la blockchain.
+- **Signer**: pot **signar transaccions** (necessita la wallet de l'usuari).
+
+```jsx
+import { ethers } from "ethers";
+
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+```
+
+---
+
+## Connexió amb MetaMask
+
+MetaMask injecta `window.ethereum` al navegador.
+
+```jsx
+async function connectWallet() {
+  if (!window.ethereum) {
+    alert("Instal·la MetaMask!");
+    return;
+  }
+  const accounts = await window.ethereum.request({
+    method: "eth_requestAccounts",
+  });
+  console.log("Compte connectat:", accounts[0]);
+}
+```
+
+---
+
+## ABI del contracte
+
+L'**ABI** (Application Binary Interface) descriu les funcions del contracte.
+
+- El genera Hardhat quan compiles: `artifacts/contracts/MyContract.sol/MyContract.json`.
+- Es copia al frontend, normalment a `src/abis/MyContract.json`.
+- Sense l'ABI, el frontend no sap com cridar el contracte.
+
+---
+
+## Instanciar un contracte
+
+```jsx
+import { ethers } from "ethers";
+import abi from "./abis/MyContract.json";
+
+const address = process.env.REACT_APP_CONTRACT_ADDRESS;
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+
+const contract = new ethers.Contract(address, abi, signer);
+```
+
+Ara `contract` té els mètodes del contracte com a funcions JS.
+
+---
+
+## Lectura vs Transacció
+
+**Lectura** (`view` / `pure`): gratuïta, instantània.
+
+```jsx
+const value = await contract.getValue();
+```
+
+**Transacció** (modifica l'estat): costa **gas**, cal esperar que es mini.
+
+```jsx
+const tx = await contract.setValue(42);
+await tx.wait(); // espera confirmació
+```
+
+---
+
+## Events del contracte
+
+El contracte pot emetre **events** que el frontend escolta:
+
+```jsx
+useEffect(() => {
+  contract.on("ValueChanged", (newValue) => {
+    console.log("Nou valor:", newValue);
+  });
+
+  return () => contract.removeAllListeners("ValueChanged");
+}, []);
+```
+
+Útil per actualitzar la UI quan algú interactua amb el contracte.
+
+---
+
+## Estats de càrrega
+
+Les transaccions triguen segons → cal mostrar-ho a l'usuari:
+
+```jsx
+const [loading, setLoading] = useState(false);
+
+async function handleClick() {
+  setLoading(true);
+  try {
+    const tx = await contract.setValue(42);
+    await tx.wait();
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+}
+```
+
+---
+
+## Estructura típica d'un frontend de dapp
+
+```text
+frontend/
+ ├ public/
+ ├ src/
+ │  ├ abis/              # ABIs del contracte
+ │  ├ components/        # components React
+ │  ├ hooks/             # useWallet, useContract...
+ │  ├ utils/ethers.js    # provider, signer
+ │  ├ App.js
+ │  └ index.js
+ ├ .env                  # adreça contracte, RPC
+ ├ .gitignore
+ └ package.json
+```
+
+---
+
+## package.json
+
+Defineix el projecte:
+
+- **dependencies**: `react`, `ethers`, `react-router-dom`...
+- **scripts**: `npm start`, `npm run build`, `npm test`.
+
+```json
+{
+  "dependencies": {
+    "react": "^18.2.0",
+    "ethers": "^6.0.0",
+    "react-router-dom": "^6.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build"
+  }
+}
+```
+
+---
+
+## build/ i .gitignore
+
+**`npm run build`** genera la carpeta `build/` amb els fitxers estàtics (HTML, CSS, JS) llestos per desplegar.
+
+El `.gitignore` típic exclou:
+
+```text
+node_modules/
+build/
+.env
+```
+
+- `node_modules/` → es reinstal·la amb `npm install`.
+- `build/` → es regenera.
+- `.env` → pot contenir claus privades.
+
+---
+
 # Exemple complet
 
 Llista de tasques:
@@ -578,3 +797,5 @@ Hem vist:
 - renderitzat condicional i llistes
 - `useEffect`
 - routing amb React Router
+- integració amb Ethereum (ethers.js, MetaMask, ABI, contractes)
+- estructura d'un frontend de dapp
