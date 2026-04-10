@@ -11,8 +11,8 @@
 - [📈 Metodologia Scrum](./gdie/03-scrum/page.md)
 - [🔗 Introducció a Blockchain](./gdie/04-blockchain/page.md)
 - [📝 Smart Contracts amb Solidity](./gdie/05-solidity/page.md)
-- [📦 Emmagatzematge amb IPFS](./gdie/06-ipfs/page.md)
-- [💻 Frontend amb React](./gdie/07-react/page.md)
+- [💻 Frontend amb React](./gdie/06-react/page.md)
+- [📦 Emmagatzematge amb IPFS](./gdie/07-ipfs/page.md)
 
 ---
 
