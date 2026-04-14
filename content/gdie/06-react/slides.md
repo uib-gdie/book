@@ -799,3 +799,11 @@ Hem vist:
 - routing amb React Router
 - integració amb Ethereum (ethers.js, MetaMask, ABI, contractes)
 - estructura d'un frontend de dapp
+
+---
+
+## React JS - React Tutorial for Beginners
+
+<!-- markdownlint-disable MD033 -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ke90Tje7VS0?si=tafNuvBEb3co4dWr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<!-- markdownlint-enable MD033 -->
