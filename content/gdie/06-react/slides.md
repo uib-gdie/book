@@ -1,5 +1,5 @@
 
-# Programació amb React
+# Frontend amb React
 
 ---
 
