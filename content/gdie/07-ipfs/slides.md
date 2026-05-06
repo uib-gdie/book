@@ -138,6 +138,12 @@ https://ipfs.io/ipfs/QmXoy...
 
 Així, qualsevol persona amb un navegador pot accedir al fitxer **sense instal·lar IPFS**.
 
+Exemple real (proveu d'obrir-lo):
+
+```text
+https://gateway.pinata.cloud/ipfs/QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR
+```
+
 ---
 
 # IPFS i dapps
@@ -265,6 +271,16 @@ Si el fitxer és una imatge, podem mostrar-la directament:
     width="300"
   />
 )}
+```
+
+Exemple amb un CID real:
+
+```jsx
+<img
+  src="https://gateway.pinata.cloud/ipfs/QmbWqxBEKC3P8tqsKc98xmWNzrzDtRLMiMPL8wBuTGsMnR"
+  alt="exemple IPFS"
+  width="300"
+/>
 ```
 
 ---
